@@ -1,0 +1,16 @@
+name: Slack Block Kit
+on:
+  push:
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/build
+        with:
+          os: ${{ matrix.os }}
+      - run: ls -l out

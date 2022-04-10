@@ -1,0 +1,17 @@
+name: Release Build Kit
+description: Create GitHub release for Build Kit
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v2
+    - uses: actions/download-artifact@v3
+      with:
+        name: build-kit
+        path: out/**/*.zip
+    - uses: softprops/action-gh-release@v1
+      with:
+        files: out/**/*.zip
+        body: |
+          ${{ steps.upload.outputs.app }} ~> ${{ steps.upload.outputs.version }}
+          [`${{ steps.upload.outputs.url }}`](`${{ steps.upload.outputs.url }}`)
+          <!-- `${{ steps.upload.outputs.s3Uri }}` -->

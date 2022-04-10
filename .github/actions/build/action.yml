@@ -1,0 +1,18 @@
+name: Build app
+description: Build electron app
+inputs:
+  os:
+    description: OS
+    required: true
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v2
+    - shell: bash
+      run: npm install
+    - shell: bash
+      run: npm run make
+    - uses: actions/upload-artifact@v3
+      with:
+        name: ${{ inputs.os }}
+        path: out/pkg/**/*.zip
