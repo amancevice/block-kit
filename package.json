@@ -1,6 +1,6 @@
 {
   "name": "block-kit",
-  "productName": "block-kit",
+  "productName": "Block Kit",
   "version": "0.1.0",
   "description": "Slack Block Kit Builder",
   "main": "app/index.js",
@@ -15,7 +15,7 @@
   "keywords": [],
   "author": {
     "name": "Alexander Mancevice",
-    "email": "a.mancevice@kickstarter.com"
+    "email": "alexander.mancevice@hey.com"
   },
   "license": "MIT",
   "config": {
