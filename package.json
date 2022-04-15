@@ -22,7 +22,8 @@
     "forge": {
       "packagerConfig": {
         "icon": "build/icon.icns",
-        "name": "Block Kit"
+        "name": "Block Kit",
+        "out": "fizz"
       },
       "makers": [
         {
@@ -33,6 +34,10 @@
         },
         {
           "name": "@electron-forge/maker-zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ],
           "platforms": [
             "darwin"
           ]

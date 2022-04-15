@@ -1,4 +1,4 @@
-name: Slack Block Kit
+name: Build
 on:
   push:
 jobs:
@@ -13,4 +13,3 @@ jobs:
       - uses: ./.github/actions/build
         with:
           os: ${{ matrix.os }}
-      - run: ls -l out

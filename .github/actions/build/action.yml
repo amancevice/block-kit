@@ -11,8 +11,10 @@ runs:
     - shell: bash
       run: npm install
     - shell: bash
-      run: npm run make
+      run: npx electron-forge make --arch x64
+    - shell: bash
+      run: npx electron-forge make --arch arm64
     - uses: actions/upload-artifact@v3
       with:
         name: ${{ inputs.os }}
-        path: out/pkg/**/*.zip
+        path: out/make/zip/**/*.zip
