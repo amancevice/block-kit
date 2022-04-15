@@ -1,7 +1,7 @@
 {
   "name": "block-kit",
   "productName": "Block Kit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Slack Block Kit Builder",
   "main": "app/index.js",
   "scripts": {
