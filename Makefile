@@ -1,4 +1,5 @@
-APP := Block\ Kit
+APP  := Block\ Kit
+ARCH := $(shell node -e 'console.log(os.arch())')
 
 build: | node_modules
 	npm run make
@@ -8,7 +9,7 @@ start:
 
 install: build
 	rm -rf /Applications/$(APP).app
-	cp -r out/$(APP)-darwin-x64/$(APP).app /Applications/$(APP).app
+	cp -r out/$(APP)-darwin-$(ARCH)/$(APP).app /Applications/$(APP).app
 	open /Applications/$(APP).app
 
 clean:
