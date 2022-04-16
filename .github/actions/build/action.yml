@@ -11,7 +11,7 @@ runs:
     - shell: bash
       run: npm install
     - shell: bash
-      run: npx run make
+      run: npm run make
     - uses: actions/upload-artifact@v3
       with:
         name: ${{ inputs.os }}
