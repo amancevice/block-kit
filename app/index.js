@@ -1,11 +1,11 @@
-const { app, shell, BrowserWindow, Menu } = require("electron");
+const { app, shell, BrowserView, BrowserWindow, Menu } = require("electron");
 const Store = require("electron-store");
 
 const store = new Store();
 const defaultUrl = new URL("https://app.slack.com/block-kit-builder/");
 const isMac = process.platform === "darwin";
 
-let win;
+let splash, win;
 
 // Get New Window Options
 const getBrowserWindowOptions = () => {
@@ -36,6 +36,13 @@ const setBrowserWindowBounds = () => {
 // App Opened
 const appOnReady = () => {
   win = new BrowserWindow(getBrowserWindowOptions());
+
+  splash = new BrowserView();
+  win.setBrowserView(splash);
+  let y = (win.getBounds().height - 384) / 2;
+  splash.setBounds(Object.assign(win.getBounds(), { x: 0, y: y }));
+  splash.webContents.loadFile("./app/index.html");
+
   win.loadURL(store.get("url", defaultUrl.href));
   win.on("moved", setBrowserWindowBounds);
   win.on("resized", setBrowserWindowBounds);
@@ -176,6 +183,7 @@ const winWebContentsOnDidFinishLoad = () => {
   `;
   win.webContents.insertCSS(customCSS);
   if (store.get("theme") === "dark") enableDarkMode();
+  win.removeBrowserView(splash);
 };
 
 const toggleTheme = async () => {
